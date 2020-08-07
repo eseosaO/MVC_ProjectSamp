@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<MVCSamp_FilmReview.Models.ClsFilm>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Films";
 }
 
 <h2>Film</h2>
@@ -12,19 +12,19 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Director.FirstName)
+            Director's Name
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FilmName)
+            Film
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Description)
+            Description
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.GenreName)
+            Genre
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ReleaseDate)
+            ReleaseDate
         </th>
         <th>
             @Html.DisplayNameFor(model => model.AverageScore)
@@ -35,7 +35,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Director.FirstName)
+            @Html.DisplayFor(modelItem => item.Director.FirstName) @Html.DisplayFor(modelItem => item.Director.LastName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.FilmName)
@@ -53,9 +53,17 @@
             @Html.DisplayFor(modelItem => item.AverageScore)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.FilmId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.FilmId }) |
+            @if(ViewBag.UserId != ""&&item.User != null)
+            {
+
+            if(ViewBag.UserId == "abc@gmail.com" || ViewBag.UserId == item.User.ToString())
+            {
+            @Html.ActionLink("Edit", "Edit", new { id=item.FilmId }) 
+            @*@Html.ActionLink("Details", "Details", new { id=item.FilmId }) |*@
+            <nbsp> | </nbsp>
             @Html.ActionLink("Delete", "Delete", new { id=item.FilmId })
+            }
+            }
         </td>
     </tr>
 }

@@ -169,6 +169,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ActorsController.cs" />
+    <Compile Include="Controllers\AddActorsController.cs" />
     <Compile Include="Controllers\ClsFilmsController.cs" />
     <Compile Include="Controllers\DirectorsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -180,14 +182,36 @@
     <Compile Include="Migrations\202008061448206_InitialCreate.designer.cs">
       <DependentUpon>202008061448206_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202008061654498_updatedDescriptionFilm.cs" />
+    <Compile Include="Migrations\202008061654498_updatedDescriptionFilm.designer.cs">
+      <DependentUpon>202008061654498_updatedDescriptionFilm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008061701076_updatedDescriptionFilm2.cs" />
+    <Compile Include="Migrations\202008061701076_updatedDescriptionFilm2.designer.cs">
+      <DependentUpon>202008061701076_updatedDescriptionFilm2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008061718527_ActortoModel.cs" />
+    <Compile Include="Migrations\202008061718527_ActortoModel.designer.cs">
+      <DependentUpon>202008061718527_ActortoModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008061845596_AddActortoFilm.cs" />
+    <Compile Include="Migrations\202008061845596_AddActortoFilm.designer.cs">
+      <DependentUpon>202008061845596_AddActortoFilm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008071511039_UsertoClsFilm.cs" />
+    <Compile Include="Migrations\202008071511039_UsertoClsFilm.designer.cs">
+      <DependentUpon>202008071511039_UsertoClsFilm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Actor.cs" />
+    <Compile Include="Models\AddActor.cs" />
     <Compile Include="Models\ClsFilm.cs" />
     <Compile Include="Models\ClsFilmContext.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\CommentReply.cs" />
     <Compile Include="Models\Director.cs" />
+    <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Review.cs" />
@@ -260,6 +284,16 @@
     <Content Include="Views\Directors\Details.cshtml" />
     <Content Include="Views\Directors\Edit.cshtml" />
     <Content Include="Views\Directors\Index.cshtml" />
+    <Content Include="Views\Actors\Create.cshtml" />
+    <Content Include="Views\Actors\Delete.cshtml" />
+    <Content Include="Views\Actors\Details.cshtml" />
+    <Content Include="Views\Actors\Edit.cshtml" />
+    <Content Include="Views\Actors\Index.cshtml" />
+    <Content Include="Views\AddActors\Create.cshtml" />
+    <Content Include="Views\AddActors\Delete.cshtml" />
+    <Content Include="Views\AddActors\Details.cshtml" />
+    <Content Include="Views\AddActors\Edit.cshtml" />
+    <Content Include="Views\AddActors\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -280,6 +314,21 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202008061448206_InitialCreate.resx">
       <DependentUpon>202008061448206_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008061654498_updatedDescriptionFilm.resx">
+      <DependentUpon>202008061654498_updatedDescriptionFilm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008061701076_updatedDescriptionFilm2.resx">
+      <DependentUpon>202008061701076_updatedDescriptionFilm2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008061718527_ActortoModel.resx">
+      <DependentUpon>202008061718527_ActortoModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008061845596_AddActortoFilm.resx">
+      <DependentUpon>202008061845596_AddActortoFilm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008071511039_UsertoClsFilm.resx">
+      <DependentUpon>202008071511039_UsertoClsFilm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

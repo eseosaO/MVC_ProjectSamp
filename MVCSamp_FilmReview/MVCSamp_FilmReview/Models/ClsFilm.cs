@@ -15,7 +15,9 @@ namespace MVCSamp_FilmReview.Models
         [Required]
         public virtual string FilmName { get; set; } //Declared property for name of Film 
 
-        [StringLength(400)]
+        
+        [StringLength(800)]
+        [DataType(DataType.MultilineText)]
         public virtual string Description { get; set; } // Declared property to describe the film
 
         [Required]
@@ -35,7 +37,7 @@ namespace MVCSamp_FilmReview.Models
         //public virtual float Score { get; set; }  //Declared score for the film
 
         public virtual float AverageScore { get; set; } //Declared property to hold the average of scores for film 
-
+        public virtual string User { get; set; }
         
     }
 }

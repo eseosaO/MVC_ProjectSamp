@@ -22,5 +22,9 @@ namespace MVCSamp_FilmReview.Models
         public System.Data.Entity.DbSet<MVCSamp_FilmReview.Models.ClsFilm> ClsFilms { get; set; }
 
         public System.Data.Entity.DbSet<MVCSamp_FilmReview.Models.Director> Directors { get; set; }
+
+        public System.Data.Entity.DbSet<MVCSamp_FilmReview.Models.Actor> Actors { get; set; }
+
+        public System.Data.Entity.DbSet<MVCSamp_FilmReview.Models.AddActor> AddActors { get; set; }
     }
 }

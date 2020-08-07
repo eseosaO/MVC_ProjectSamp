@@ -2,21 +2,28 @@
 
 @{
     ViewBag.Title = "Create";
+    MVCSamp_FilmReview.Models.Genre Gen = new MVCSamp_FilmReview.Models.Genre();
 }
 
-<h2>Create</h2>
 
 
-@using (Html.BeginForm()) 
+@if (ViewBag.UserId == "")
 {
+    <h2>Please Login </h2>
+}
+else
+{
+    using (Html.BeginForm())
+    {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        <h4>Film</h4>
+        <h2>Create Film</h2>
+        
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.FilmName, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.FilmName, "Name of Film", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.FilmName, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.FilmName, "", new { @class = "text-danger" })
@@ -32,7 +39,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.DirectorId, "DirectorId", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.DirectorId, "Director's FirstName", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("DirectorId", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.DirectorId, "", new { @class = "text-danger" })
@@ -40,9 +47,9 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.GenreName, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.GenreName, "Genre", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList(model => model.GenreName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.GenreName, new SelectList(Gen.GenreList), new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.GenreName, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -55,13 +62,13 @@
             </div>
         </div>
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.AverageScore, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.AverageScore, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.AverageScore, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -69,6 +76,7 @@
             </div>
         </div>
     </div>
+    }
 }
 
 <div>
