@@ -18,10 +18,14 @@ namespace MVCSamp_FilmReview.Models
         public virtual string LastName { get; set; } //Director's last name
 
         [Required]
+        [DataType(DataType.Date)]
+        //[DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public virtual DateTime DateofBirth { get; set; } //Director's date of birth
 
         public virtual List<ClsFilm> DirectorFilms { get; set; } //List of films done by director
         
         public virtual List<Comment> Comment { get; set; } //List of comments on director
+
+        public virtual string User { get; set; }//Logged-in User to input director 
     }
 }

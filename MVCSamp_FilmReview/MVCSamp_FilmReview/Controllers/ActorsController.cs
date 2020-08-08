@@ -17,17 +17,27 @@ namespace MVCSamp_FilmReview.Controllers
         // GET: Actors
         public ActionResult Index()
         {
+            ViewBag.UserId = User.Identity.Name;
             return View(db.Actors.ToList());
         }
 
         // GET: Actors/Details/5
         public ActionResult Details(int? id)
         {
+            ViewBag.UserId = User.Identity.Name;
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Actor actor = db.Actors.Find(id);
+            
+            Actor actor = db.Actors.Find(id); //Search for actor with given id
+            List<AddActor> acm = db.AddActors.Where(i => i.ActorId == id).ToList(); //list to store the confirmed Actorid in AddActor list
+            foreach (AddActor cka in acm)
+            {
+                ClsFilm film = db.ClsFilms.Find(cka.FilmId); //Find film with Actorid in AddActor list
+                actor.FilmCastOn.Add(film); //Add film to the FilmCastOn list
+            }
+
             if (actor == null)
             {
                 return HttpNotFound();
@@ -38,6 +48,7 @@ namespace MVCSamp_FilmReview.Controllers
         // GET: Actors/Create
         public ActionResult Create()
         {
+            ViewBag.UserId = User.Identity.Name;
             return View();
         }
 
@@ -51,6 +62,7 @@ namespace MVCSamp_FilmReview.Controllers
             if (ModelState.IsValid)
             {
                 db.Actors.Add(actor);
+                actor.User = User.Identity.Name;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -66,6 +78,8 @@ namespace MVCSamp_FilmReview.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Actor actor = db.Actors.Find(id);
+            actor.User = User.Identity.Name;
+
             if (actor == null)
             {
                 return HttpNotFound();
@@ -82,6 +96,7 @@ namespace MVCSamp_FilmReview.Controllers
         {
             if (ModelState.IsValid)
             {
+                actor.User = User.Identity.Name;
                 db.Entry(actor).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

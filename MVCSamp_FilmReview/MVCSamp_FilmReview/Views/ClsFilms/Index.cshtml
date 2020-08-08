@@ -38,7 +38,8 @@
             @Html.DisplayFor(modelItem => item.Director.FirstName) @Html.DisplayFor(modelItem => item.Director.LastName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.FilmName)
+            @*@Html.DisplayFor(modelItem => item.FilmName )*@
+            @Html.ActionLink(item.FilmName,"Details", new { id = item.FilmId})
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Description)

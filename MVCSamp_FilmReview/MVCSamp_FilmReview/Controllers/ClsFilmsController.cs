@@ -26,11 +26,19 @@ namespace MVCSamp_FilmReview.Controllers
         public ActionResult Details(int? id)
         {
             ViewBag.UserId = User.Identity.Name;
+            
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             ClsFilm clsFilm = db.ClsFilms.Find(id);
+            List<AddActor> ct = db.AddActors.Where(i => i.FilmId == id).ToList();
+
+            foreach(AddActor mg in ct)
+            {
+                Actor act = db.Actors.Find(mg.ActorId);
+                clsFilm.Cast.Add(act);
+            }
             if (clsFilm == null)
             {
                 return HttpNotFound();

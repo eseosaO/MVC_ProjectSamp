@@ -18,11 +18,15 @@ namespace MVCSamp_FilmReview.Models
         public virtual string Surname { get; set; } //property for surname of actor
 
         [Required]
+        [DataType(DataType.Date)]
+        //[DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public virtual DateTime DateofBirth { get; set; } // property for date of birth
 
         public virtual List<ClsFilm> FilmCastOn { get; set; } //List of films actor has acted
         public virtual List<Comment> Comment { get; set; } // List of comments on the actor
 
-        
+        public virtual string User { get; set; } //Logged-in User to input actor 
+
+
     }
 }

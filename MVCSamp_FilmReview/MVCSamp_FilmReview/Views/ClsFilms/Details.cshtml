@@ -1,5 +1,6 @@
 ﻿@model MVCSamp_FilmReview.Models.ClsFilm
 
+
 @{
     ViewBag.Title = "Details";
 }
@@ -7,19 +8,11 @@
 <h2>Details</h2>
 
 <div>
-    <h4>ClsFilm</h4>
+    <h4>Film</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Director.FirstName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Director.FirstName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.FilmName)
+            Name of Film
         </dt>
 
         <dd>
@@ -27,15 +20,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.GenreName)
+            GenreName
         </dt>
 
         <dd>
@@ -43,20 +28,58 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ReleaseDate)
+            Director's Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Director.FirstName)
+            @Html.DisplayFor(model => model.Director.LastName)
+        </dd>
+
+        <dt>
+            ReleaseDate
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.ReleaseDate)
         </dd>
 
+
+
         <dt>
-            @Html.DisplayNameFor(model => model.AverageScore)
+            Description
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+
+        <dt>
+            AverageScore
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.AverageScore)
         </dd>
+        @if(ViewBag.UserId == "abc@gmail.com")
+        {
+            <dd>
+                @Html.ActionLink("AddActors", "ActorActors","Film", new { id = Model.FilmId}, null)
+            </dd>
+        }
+        <dt>
+            @Html.DisplayNameFor(model => model.Cast)
+        </dt>
+
+        <dt>
+            @foreach(var item in Model.Cast)
+            {
+             <dd>
+                 @Html.ActionLink(item.FirstName + " " + item.Surname, "Details", "Actors", new { id = item.ActorId}, null)
+             </dd>
+            }
+        </dt>
 
     </dl>
 </div>

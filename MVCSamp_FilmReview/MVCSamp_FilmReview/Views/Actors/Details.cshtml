@@ -1,17 +1,18 @@
 ﻿@model MVCSamp_FilmReview.Models.Actor
 
+
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Actor's Detail";
 }
 
-<h2>Details</h2>
+<h2>@Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.Surname)</h2>
 
 <div>
-    <h4>Actor</h4>
+    <h4>Actor's Detail</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
+            First Name
         </dt>
 
         <dd>
@@ -19,7 +20,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Surname)
+            Surname
         </dt>
 
         <dd>
@@ -27,16 +28,27 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DateofBirth)
+            Date of Birth
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.DateofBirth)
         </dd>
 
+        <dt>
+            Films Cast On:
+        </dt>
+
+        @foreach (var item in Model.FilmCastOn)
+        {
+            <dd>
+                @Html.ActionLink(item.FilmName, "Details", "ClsFilms", new { id = item.FilmId}, null)
+            </dd>
+        }
+
     </dl>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ActorId }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("List of Actors", "Index")
 </p>

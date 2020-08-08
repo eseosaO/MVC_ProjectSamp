@@ -202,6 +202,26 @@
     <Compile Include="Migrations\202008071511039_UsertoClsFilm.designer.cs">
       <DependentUpon>202008071511039_UsertoClsFilm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202008081529317_UsertoActorandDirector.cs" />
+    <Compile Include="Migrations\202008081529317_UsertoActorandDirector.designer.cs">
+      <DependentUpon>202008081529317_UsertoActorandDirector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008081532579_UsertoActorandDirector1.cs" />
+    <Compile Include="Migrations\202008081532579_UsertoActorandDirector1.designer.cs">
+      <DependentUpon>202008081532579_UsertoActorandDirector1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008081704187_UpdatedDateFormat.cs" />
+    <Compile Include="Migrations\202008081704187_UpdatedDateFormat.designer.cs">
+      <DependentUpon>202008081704187_UpdatedDateFormat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008081742040_UpdatedDateFormattoDirector.cs" />
+    <Compile Include="Migrations\202008081742040_UpdatedDateFormattoDirector.designer.cs">
+      <DependentUpon>202008081742040_UpdatedDateFormattoDirector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008081745281_UpdatedDateFormattoFilm.cs" />
+    <Compile Include="Migrations\202008081745281_UpdatedDateFormattoFilm.designer.cs">
+      <DependentUpon>202008081745281_UpdatedDateFormattoFilm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Actor.cs" />
@@ -329,6 +349,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202008071511039_UsertoClsFilm.resx">
       <DependentUpon>202008071511039_UsertoClsFilm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008081529317_UsertoActorandDirector.resx">
+      <DependentUpon>202008081529317_UsertoActorandDirector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008081532579_UsertoActorandDirector1.resx">
+      <DependentUpon>202008081532579_UsertoActorandDirector1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008081704187_UpdatedDateFormat.resx">
+      <DependentUpon>202008081704187_UpdatedDateFormat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008081742040_UpdatedDateFormattoDirector.resx">
+      <DependentUpon>202008081742040_UpdatedDateFormattoDirector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008081745281_UpdatedDateFormattoFilm.resx">
+      <DependentUpon>202008081745281_UpdatedDateFormattoFilm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

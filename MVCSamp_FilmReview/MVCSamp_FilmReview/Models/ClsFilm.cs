@@ -29,7 +29,10 @@ namespace MVCSamp_FilmReview.Models
 
         public virtual List<Actor> Cast { get; set; } //Declared cast for the Film
         public virtual List<Review> Reviews { get; set; } //Declared list of reviews for film
+
         [Required]
+        //[DataType(DataType.Date)]
+        //[DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public virtual string ReleaseDate { get; set; } //Declared property for the release date of film
 
         
@@ -37,7 +40,7 @@ namespace MVCSamp_FilmReview.Models
         //public virtual float Score { get; set; }  //Declared score for the film
 
         public virtual float AverageScore { get; set; } //Declared property to hold the average of scores for film 
-        public virtual string User { get; set; }
-        
+        public virtual string User { get; set; } //Logged-in User to input film 
+
     }
 }
