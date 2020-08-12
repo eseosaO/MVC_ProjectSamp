@@ -4,7 +4,7 @@
     ViewBag.Title = "Films";
 }
 
-<h2>Film</h2>
+<h2>Available Films</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -26,9 +26,9 @@
         <th>
             ReleaseDate
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.AverageScore)
-        </th>
+        </th>*@
         <th></th>
     </tr>
 
@@ -50,9 +50,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.ReleaseDate)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.AverageScore)
-        </td>
+        </td>*@
         <td>
             @if(ViewBag.UserId != ""&&item.User != null)
             {

@@ -11,7 +11,7 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
+            First Name
         </dt>
 
         <dd>
@@ -19,7 +19,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.LastName)
+            Last Name
         </dt>
 
         <dd>
@@ -27,16 +27,37 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DateofBirth)
+            Date of Birth
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.DateofBirth)
         </dd>
 
+        <dt>
+            Directed Films:
+        </dt>
+        @foreach(var item in Model.DirectorFilms)
+        {
+            <dd>
+                @Html.ActionLink(item.FilmName, "Details", "ClsFilms", new { id = item.FilmId}, null)
+            </dd>
+        }
+
     </dl>
 </div>
+
+@if (ViewBag.UserId != "")
+{
+<div class="glyphicon-text-color">
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.DirectorId }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edit", "Edit", new { id = Model.DirectorId }) 
 </p>
+</div>
+}
+
+<div class="glyphicon-link">
+<p>
+    @Html.ActionLink("Back to List of Directors", "Index")
+</p>
+</div>

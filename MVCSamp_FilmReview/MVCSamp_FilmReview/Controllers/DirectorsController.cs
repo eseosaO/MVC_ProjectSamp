@@ -17,17 +17,21 @@ namespace MVCSamp_FilmReview.Controllers
         // GET: Directors
         public ActionResult Index()
         {
+            ViewBag.UserId = User.Identity.Name;
             return View(db.Directors.ToList());
         }
 
         // GET: Directors/Details/5
         public ActionResult Details(int? id)
         {
+            ViewBag.UserId = User.Identity.Name;
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Director director = db.Directors.Find(id);
+            List<ClsFilm> fil = db.ClsFilms.Where(i => i.DirectorId == id).ToList();
+            director.DirectorFilms = fil;
             if (director == null)
             {
                 return HttpNotFound();
@@ -38,6 +42,7 @@ namespace MVCSamp_FilmReview.Controllers
         // GET: Directors/Create
         public ActionResult Create()
         {
+            ViewBag.UserId = User.Identity.Name;
             return View();
         }
 
@@ -51,6 +56,7 @@ namespace MVCSamp_FilmReview.Controllers
             if (ModelState.IsValid)
             {
                 db.Directors.Add(director);
+                director.User = User.Identity.Name;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -66,6 +72,7 @@ namespace MVCSamp_FilmReview.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Director director = db.Directors.Find(id);
+            director.User = User.Identity.Name;
             if (director == null)
             {
                 return HttpNotFound();
@@ -82,6 +89,7 @@ namespace MVCSamp_FilmReview.Controllers
         {
             if (ModelState.IsValid)
             {
+                director.User = User.Identity.Name;
                 db.Entry(director).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

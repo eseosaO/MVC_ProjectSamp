@@ -24,20 +24,20 @@ namespace MVCSamp_FilmReview.Controllers
         // GET: Actors/Details/5
         public ActionResult Details(int? id)
         {
+
             ViewBag.UserId = User.Identity.Name;
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            
-            Actor actor = db.Actors.Find(id); //Search for actor with given id
-            List<AddActor> acm = db.AddActors.Where(i => i.ActorId == id).ToList(); //list to store the confirmed Actorid in AddActor list
-            foreach (AddActor cka in acm)
+            Actor actor = db.Actors.Find(id);
+            List<AddActor> actF = db.AddActors.Where(i => i.ActorId == id).ToList();
+            foreach(AddActor reA in actF)
             {
-                ClsFilm film = db.ClsFilms.Find(cka.FilmId); //Find film with Actorid in AddActor list
-                actor.FilmCastOn.Add(film); //Add film to the FilmCastOn list
+                ClsFilm cat = db.ClsFilms.Find(reA.FilmId);
+                    actor.FilmCastOn.Add(cat);
             }
-
+        
             if (actor == null)
             {
                 return HttpNotFound();
@@ -79,7 +79,6 @@ namespace MVCSamp_FilmReview.Controllers
             }
             Actor actor = db.Actors.Find(id);
             actor.User = User.Identity.Name;
-
             if (actor == null)
             {
                 return HttpNotFound();
@@ -92,7 +91,7 @@ namespace MVCSamp_FilmReview.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ActorId,FirstName,Surname,DateofBirth")] Actor actor)
+        public ActionResult Edit([Bind(Include = "ActorId,FirstName,Surname,DateofBirth,User")] Actor actor)
         {
             if (ModelState.IsValid)
             {

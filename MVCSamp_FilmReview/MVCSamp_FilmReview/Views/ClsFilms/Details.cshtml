@@ -2,13 +2,13 @@
 
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Film's Details";
 }
 
-<h2>Details</h2>
+<h2>Film's Details</h2>
 
 <div>
-    <h4>Film</h4>
+    <h4>@Html.DisplayFor(model => model.FilmName)</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -28,7 +28,7 @@
         </dd>
 
         <dt>
-            Director's Name)
+            Director's Name
         </dt>
 
         <dd>
@@ -62,10 +62,10 @@
         <dd>
             @Html.DisplayFor(model => model.AverageScore)
         </dd>
-        @if(ViewBag.UserId == "abc@gmail.com")
+        @if (ViewBag.UserId == "abc@gmail.com")
         {
             <dd>
-                @Html.ActionLink("AddActors", "ActorActors","Film", new { id = Model.FilmId}, null)
+                @Html.ActionLink("AddActors", "ActorActors", "Film", new { id = Model.FilmId }, null)
             </dd>
         }
         <dt>
@@ -73,17 +73,29 @@
         </dt>
 
         <dt>
-            @foreach(var item in Model.Cast)
+            @foreach (var item in Model.Cast)
             {
-             <dd>
-                 @Html.ActionLink(item.FirstName + " " + item.Surname, "Details", "Actors", new { id = item.ActorId}, null)
-             </dd>
-            }
-        </dt>
+            <dd>
+                @Html.ActionLink(item.FirstName + " " + item.Surname, "Details", "Actors", new { id = item.ActorId }, null)
+            </dd>
+        }
+            </dt>
 
-    </dl>
+        </dl>
+    </div>
+
+
+    @if (ViewBag.UserId != "")
+    {
+        <div class="glyphicon-text-color">
+            <p>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.FilmId })
+            </p>
+        </div>
+    }
+
+<div class="glyphicon-link">
+    <p>
+        @Html.ActionLink("Back to List of Films", "Index")
+    </p>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.FilmId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
