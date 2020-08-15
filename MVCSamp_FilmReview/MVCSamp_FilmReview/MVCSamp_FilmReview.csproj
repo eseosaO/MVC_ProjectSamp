@@ -175,6 +175,7 @@
     <Compile Include="Controllers\DirectorsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ReviewsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -237,6 +238,30 @@
     <Compile Include="Migrations\202008111453370_updatedActor1db.cs" />
     <Compile Include="Migrations\202008111453370_updatedActor1db.designer.cs">
       <DependentUpon>202008111453370_updatedActor1db.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008120918135_AddFilmtoReview.cs" />
+    <Compile Include="Migrations\202008120918135_AddFilmtoReview.designer.cs">
+      <DependentUpon>202008120918135_AddFilmtoReview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008121033238_UpdatedFilmtoReview.cs" />
+    <Compile Include="Migrations\202008121033238_UpdatedFilmtoReview.designer.cs">
+      <DependentUpon>202008121033238_UpdatedFilmtoReview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008121657129_UpdatedReviewPostdate.cs" />
+    <Compile Include="Migrations\202008121657129_UpdatedReviewPostdate.designer.cs">
+      <DependentUpon>202008121657129_UpdatedReviewPostdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008131640299_updatecommenttoReview.cs" />
+    <Compile Include="Migrations\202008131640299_updatecommenttoReview.designer.cs">
+      <DependentUpon>202008131640299_updatecommenttoReview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008131656399_updatecommenttoReview1.cs" />
+    <Compile Include="Migrations\202008131656399_updatecommenttoReview1.designer.cs">
+      <DependentUpon>202008131656399_updatecommenttoReview1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008131759123_updateuserscoretoReview.cs" />
+    <Compile Include="Migrations\202008131759123_updateuserscoretoReview.designer.cs">
+      <DependentUpon>202008131759123_updateuserscoretoReview.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -330,6 +355,13 @@
     <Content Include="Views\AddActors\Details.cshtml" />
     <Content Include="Views\AddActors\Edit.cshtml" />
     <Content Include="Views\AddActors\Index.cshtml" />
+    <Content Include="Views\Reviews\Create.cshtml" />
+    <Content Include="Views\Reviews\Delete.cshtml" />
+    <Content Include="Views\Reviews\Details.cshtml" />
+    <Content Include="Views\Reviews\Edit.cshtml" />
+    <Content Include="Views\Reviews\Index.cshtml" />
+    <Content Include="Views\Reviews\View.cshtml" />
+    <Content Include="Views\Reviews\CommentReply.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -392,6 +424,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202008111453370_updatedActor1db.resx">
       <DependentUpon>202008111453370_updatedActor1db.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008120918135_AddFilmtoReview.resx">
+      <DependentUpon>202008120918135_AddFilmtoReview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008121033238_UpdatedFilmtoReview.resx">
+      <DependentUpon>202008121033238_UpdatedFilmtoReview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008121657129_UpdatedReviewPostdate.resx">
+      <DependentUpon>202008121657129_UpdatedReviewPostdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008131640299_updatecommenttoReview.resx">
+      <DependentUpon>202008131640299_updatecommenttoReview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008131656399_updatecommenttoReview1.resx">
+      <DependentUpon>202008131656399_updatecommenttoReview1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008131759123_updateuserscoretoReview.resx">
+      <DependentUpon>202008131759123_updateuserscoretoReview.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

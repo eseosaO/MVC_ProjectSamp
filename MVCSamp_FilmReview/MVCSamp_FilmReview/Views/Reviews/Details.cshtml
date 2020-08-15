@@ -1,0 +1,183 @@
+﻿@model MVCSamp_FilmReview.Models.Review
+
+@{
+    ViewBag.Title = "Review Details";
+}
+
+<h2>Review of @Html.DisplayFor(model => model.FilmForReview.FilmName)</h2>
+
+<div>
+    <h4>Review</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Title of Review:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReviewTitle)
+        </dd>
+        
+        <br/>
+
+        <dt>
+            Reviewed Film:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FilmForReview.FilmName)
+        </dd>
+
+        <br/>
+
+        <dt>
+            Review posted By:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+
+        <br />
+
+        <dt>
+            Date Posted:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PostDate)
+        </dd>
+
+        <br />
+
+        <dt>
+            Review:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <br />
+
+        <dt>
+            Review Score:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReviewScore)
+        </dd>
+        <br />
+        <br />
+        <dt>
+            Comments on Film Review:
+        </dt>
+
+        @foreach (var item in Model.Comment)
+        {
+        <dd>
+            @if (item.ReviewId == Model.ReviewId)
+            {
+                @Html.DisplayFor(Model => item.Content)
+                <nbsp style="font-size:8px"> -posted by @Html.DisplayFor(Model => item.AuthorId)</nbsp>
+
+
+                if (ViewBag.UserId != "")
+                {
+                    if (ViewBag.isban == false)
+                    {
+                        @Html.ActionLink("Reply", "CommentReply", new { id = item.ReviewId, commentId = item.CommentId }, null)
+                    }
+
+                    if (ViewBag.UserId == "abc@gmail.com")
+                    {
+                        //<nbsp> | </nbsp>
+                        @Html.ActionLink("DeleteComment", "DeleteComment", new { id = item.CommentId, filmId = item.FilmId })
+
+                        <nbsp> | </nbsp>
+                        @Html.ActionLink("Block this user or change content", "BanUser/" + item.CommentId, "films")
+                    }
+                }
+            }
+
+            @if (item.CommentResponse != null)
+            {
+                foreach (var reply in item.CommentResponse)
+                {
+                    <br />
+                    <nbsp> -----</nbsp>
+                    @Html.DisplayFor(model => reply.Content);
+                    <nbsp style="font-size:8px">-posted by @Html.DisplayFor(Model => item.AuthorId)</nbsp>
+
+                }
+
+            }
+            <br />
+            <nbsp>***********************************************************</nbsp>
+        </dd>
+        }
+
+        <br />
+        <br />
+        <br />
+        <br />
+        <dt>
+            New Comment on Review:
+        </dt>
+
+        <dd>
+            @if (ViewBag.UserId != "")
+            {
+                using (Html.BeginForm())
+                {
+                    bool isUserBanned = false;
+                    foreach (var item in Model.Comment)
+                    {
+                        if (item.IsBlocked)
+                        {
+                            if (item.AuthorId == User.Identity.Name)
+                            {
+                                isUserBanned = true;
+                            }
+                        }
+                    }
+                    if (isUserBanned == true || ViewBag.isban == true)
+                    {
+                        <h2>You are blocked</h2>
+                    }
+                    else
+                    {
+                        @Html.TextBoxFor(model => model.ReviewId, new { style = "display: none;" })
+                        @Html.TextArea("NewComment", "")
+                        <input type="submit" value="send" />
+                    }
+                }
+            }
+
+            else
+            {
+                <h2>Please Login</h2>
+            }
+        </dd>
+
+
+    </dl>
+</div>
+
+@*@if (ViewBag.UserId != "" )
+{
+<div class="glyphicon-text-color">
+  <p>
+
+    @Html.ActionLink("Edit Review", "Edit", new { id = Model.ReviewId }) 
+  </p>
+</div>
+}*@
+
+
+
+<div class="glyphicon-link">
+<p>
+    @Html.ActionLink("Back to List of Reviews for all Films", "Index")
+</p>
+</div>

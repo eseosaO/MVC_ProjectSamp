@@ -1,0 +1,69 @@
+﻿@model IEnumerable<MVCSamp_FilmReview.Models.Review>
+
+@{
+    ViewBag.Title = "Reviews";
+}
+
+<h2>Available Reviews</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Film
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>*@
+        <th>
+            Title of Review
+        </th>
+        <th>
+            PostDate
+        </th>
+        <th>
+            Review Description
+        </th>
+        <th>
+            Review Score
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FilmForReview.FilmName)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.UserId)
+        </td>*@
+        <td>
+            @Html.ActionLink(item.ReviewTitle, "Details", new { id = item.ReviewId }) 
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PostDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReviewScore)
+        </td>
+        <td>
+            @if (ViewBag.UserId != "" && item.UserId != null)
+            {
+                if (ViewBag.UserId == "abc@gmail.com" || ViewBag.UserId == item.UserId.ToString())
+                {
+                   @Html.ActionLink("Edit", "Edit", new { id = item.ReviewId }) 
+                   <nbsp>|</nbsp>
+                   @Html.ActionLink("Delete", "Delete", new { id = item.ReviewId })
+                }
+            }
+        </td>
+    </tr>
+}
+
+</table>
