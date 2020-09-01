@@ -6,11 +6,12 @@
 
 @if (ViewBag.UserId == "")
 {
-    <div class="text-center">
-        <div class="alert-warning">
-            <h2> Please Login</h2>
-        </div>
+<div class="jumbotron">
+    <div class="text-warning">
+        <h2>Are you Logged in ?</h2>
+        <p class="alert-warning">@Html.ActionLink("Please click here to Login or Register", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</p>
     </div>
+</div>
 }
 else
 {
@@ -66,7 +67,7 @@ using (Html.BeginForm())
 
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List of Actors", "Index")
 </div>
 
 @section Scripts {

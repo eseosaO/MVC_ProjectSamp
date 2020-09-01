@@ -15,11 +15,51 @@ namespace MVCSamp_FilmReview.Controllers
         private ClsFilmContext db = new ClsFilmContext();
 
         // GET: ClsFilms
-        public ActionResult Index()
+        public ActionResult Index(string GenName, string Rating)
         {
             ViewBag.UserId = User.Identity.Name;
-            var clsFilms = db.ClsFilms.Include(c => c.Director);
-            return View(clsFilms.ToList());
+            //var clsFilms = db.ClsFilms.Include(c => c.Director)
+            var clsFilms = db.ClsFilms.Include(c => c.Director).ToList();
+            //return View(clsFilms.ToList());
+            if(GenName == "Other"|| GenName == null)
+            {
+                if(Rating == "Worst Films")
+                {
+                    clsFilms = clsFilms.OrderBy(i => i.AverageScore).ToList();
+                }
+                else if(Rating == "Best Films")
+                {
+                    clsFilms = clsFilms.OrderByDescending(i => i.AverageScore).ToList();
+                }
+
+            }
+            else
+            {
+                clsFilms = db.ClsFilms.Where(i => i.GenreName == GenName).ToList();
+                
+            }
+
+            foreach(ClsFilm film in clsFilms)
+            {
+                int idf = film.FilmId;
+                //int count = 1;
+                
+                List<Comment> CommentLst = db.Comments.Where(i => i.FilmId == idf).ToList();
+                foreach(Comment com in CommentLst)
+                {
+                    List<CommentReply> comReplst = new List<CommentReply>();
+                    if (db.CommentReplies.Where(c => c.CommentId == com.CommentId).ToList() != null)
+                    {
+                        comReplst = db.CommentReplies.Where(c => c.CommentId == com.CommentId).ToList();
+                    }
+                    //film.AverageScore += com.UserScore;
+                    //count++;
+                }
+
+                //film.AverageScore = film.AverageScore / count;
+            }
+
+            return View(clsFilms);
         }
 
         // GET: ClsFilms/Details/5

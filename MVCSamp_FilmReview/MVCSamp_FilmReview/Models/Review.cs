@@ -28,9 +28,8 @@ namespace MVCSamp_FilmReview.Models
         [DataType(DataType.MultilineText)]
         public virtual string Description { get; set; } //property for the review criticing or praising the film
 
-        [Range(1,10)]
-        [Required]
-        public virtual int ReviewScore { get; set; }
+        
+        public virtual float ReviewScore { get; set; }
 
         public virtual List<Comment> Comment { get; set; } //property for list of comments by others on a review
     }

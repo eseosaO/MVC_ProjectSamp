@@ -21,7 +21,7 @@ namespace MVCSamp_FilmReview.Models
 
         //[Range(1, 10)]
         [Required]
-        public virtual float UserScore { get; set; } //property for user's score on comment
+        public virtual int UserScore { get; set; } //property for user's score on comment
         //public virtual string Email { get; set; }
 
         public virtual List<CommentReply> CommentResponse { get; set; } //property for list of reply to comments

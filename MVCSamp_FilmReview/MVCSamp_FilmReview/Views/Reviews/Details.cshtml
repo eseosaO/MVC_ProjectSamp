@@ -79,6 +79,7 @@
             @if (item.ReviewId == Model.ReviewId)
             {
                 @Html.DisplayFor(Model => item.Content)
+                <p>@Html.DisplayFor(Model => item.UserScore)</p>
                 <nbsp style="font-size:8px"> -posted by @Html.DisplayFor(Model => item.AuthorId)</nbsp>
 
 
@@ -149,7 +150,9 @@
                     {
                         @Html.TextBoxFor(model => model.ReviewId, new { style = "display: none;" })
                         @Html.TextArea("NewComment", "")
-                        <input type="submit" value="send" />
+                        <p><h1>Comment & Score:</h1></p>
+                        <input type="number" name="UserScore" class="rating" min="0"max="10" step="1" datasize="xl" data-stars="10">
+                        <input type="submit" value="Post Comment & Score"  class="btn btn-default"/>
                     }
                 }
             }

@@ -2,13 +2,32 @@
 
 @{
     ViewBag.Title = "Films";
+    MVCSamp_FilmReview.Models.Genre Gen = new MVCSamp_FilmReview.Models.Genre();
 }
 
 <h2>Available Films</h2>
+<div class="glyphicon-align-center">
+<form action="ClsFilms">
+    <p>
+        Search by Genre: @Html.DropDownList("SearchStringGenre", new SelectList(Gen.GenreList))
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+    </p>
+    <p>
+        <select name="AverageScore">
+            <option value="Best Films">Best Films</option>
+            <option value="Worst Films">Worst Films</option>
+        </select>
+    </p>
+    <input type="submit" value="Filter" />
+</form>
+</div>
+
+<div class="text-center" >
+    <p>
+        <a class="btn btn-primary" href="~/ClsFilms/Create">Create New Film Details</a>
+    </p>
+</div>
+
 <table class="table">
     <tr>
         <th>
@@ -22,6 +41,9 @@
         </th>
         <th>
             Genre
+        </th>
+        <th>
+            AverageScore
         </th>
         <th>
             ReleaseDate
@@ -46,6 +68,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.GenreName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AverageScore)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ReleaseDate)

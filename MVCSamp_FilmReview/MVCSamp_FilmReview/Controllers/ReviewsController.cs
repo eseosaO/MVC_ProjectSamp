@@ -18,8 +18,51 @@ namespace MVCSamp_FilmReview.Controllers
         public ActionResult Index()
         {
             ViewBag.UserId = User.Identity.Name;
-            var reviews = db.Reviews.Include(r => r.FilmForReview);
-            return View(reviews.ToList());
+            var reviews = db.Reviews.Include(r => r.FilmForReview).ToList();
+            
+            foreach (Review rev in reviews)
+            {
+                int idr = rev.ReviewId;
+                List<Comment> comList = db.Comments.Where(i => i.ReviewId == idr).ToList();
+                List<int> scoreL = new List<int>();
+                foreach (Comment com in comList)
+                {
+                    scoreL.Add(com.UserScore);
+                }
+                if (comList.Count != 0)
+                {
+                    rev.ReviewScore = (scoreL.AsQueryable().Sum()) / comList.Count;
+                }
+            }
+            return View(reviews);
+        }
+
+        // GET: Reviews/Create
+        public ActionResult Create()
+        {
+            ViewBag.UserId = User.Identity.Name;
+            ViewBag.FilmId = new SelectList(db.ClsFilms, "FilmId", "FilmName");
+            return View();
+        }
+
+        // POST: Reviews/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "ReviewId,UserId,FilmId,ReviewTitle,PostDate,Description,ReviewScore")] Review review)
+        {
+            if (ModelState.IsValid)
+            {
+                review.UserId = User.Identity.Name;
+              
+                db.Reviews.Add(review);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            ViewBag.FilmId = new SelectList(db.ClsFilms, "FilmId", "FilmName", review.FilmId);
+            return View(review);
         }
 
         // GET: Reviews/Details/5
@@ -36,22 +79,40 @@ namespace MVCSamp_FilmReview.Controllers
                 }
             }
 
-            List<Comment> comList = db.Comments.Where(i => i.ActorId == id || i.DirectorId == id).ToList();
-            foreach(Comment item in comList)
+            List<Comment> comList = db.Comments.Where(i => i.ReviewId == id).ToList();
+            Review review = db.Reviews.Find(id);
+            //int count = 0;
+            int revscore;
+            List<int> scolist = new List<int>();
+            foreach (Comment item in comList)
             {
+                
                 CommentReply comrep = new CommentReply();
                 List<CommentReply> comrepList = new List<CommentReply>();
                 if(db.CommentReplies.Where(i => i.CommentId == item.CommentId).ToList() != null)
                 {
                     comrepList = db.CommentReplies.Where(i => i.CommentId == item.CommentId).ToList();
                 }
+                
+                scolist.Add(item.UserScore);
+                              
+
             }
+            revscore = scolist.AsQueryable().Sum();
+            if (comList.Count != 0)
+            {
+                review.ReviewScore = revscore / comList.Count;
+            }
+            //db.Reviews.Add(review);
+            //db.SaveChanges();
+           
+
 
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Review review = db.Reviews.Find(id);
+            
             if (review == null)
             {
                 return HttpNotFound();
@@ -118,7 +179,9 @@ namespace MVCSamp_FilmReview.Controllers
             ViewBag.UserId = User.Identity.Name;
             int id = Convert.ToInt32(Request.Params["ReviewId"]);
             Comment com = new Comment();
+            
             com.Content = Request.Params["NewComment"];
+            com.UserScore = Convert.ToInt32(Request.Params["UserScore"]);
             com.AuthorId = User.Identity.Name;
             com.ReviewId = id;
             com.ActorId = 1;
@@ -126,18 +189,35 @@ namespace MVCSamp_FilmReview.Controllers
             com.FilmId = 1;
             db.Comments.Add(com);
             db.SaveChanges();
-            List<Comment> comList = db.Comments.Where(i => i.DirectorId == id || i.ActorId == id).ToList();
-            foreach(Comment item in comList)
+            List<Comment> comList = db.Comments.Where(i => i.ReviewId == id).ToList();
+            Review review = db.Reviews.Find(id);
+
+            //int revscore;
+            //List<int> scolist = new List<int>();
+            foreach (Comment item in comList)
             {
-                CommentReply comrep = new CommentReply();
+                
+                
+                CommentReply comrep = new CommentReply(); 
                 List<CommentReply> comrepList = new List<CommentReply>();
                 if(db.CommentReplies.Where(i => i.CommentId == item.CommentId).ToList() != null)
                 {
                     comrepList = db.CommentReplies.Where(i => i.CommentId == item.CommentId).ToList();
                 }
+                //scolist.Add(item.UserScore);
+
             }
-            Review review = db.Reviews.Find(id);
+
+            /*revscore = scolist.AsQueryable().Sum();
+            if (comList.Count != 0)
+            {
+                review.ReviewScore = revscore / comList.Count;
+            }*/
+
             review.Comment = comList;
+            //db.Reviews.Add(review);
+            //db.SaveChanges();
+            
             int rid = review.ReviewId;
 
             if (review == null)
@@ -145,34 +225,9 @@ namespace MVCSamp_FilmReview.Controllers
                 return HttpNotFound();
             }
             return RedirectToAction("Details/" + id);
-        } 
-
-        // GET: Reviews/Create
-        public ActionResult Create()
-        {
-            ViewBag.UserId = User.Identity.Name;
-            ViewBag.FilmId = new SelectList(db.ClsFilms, "FilmId", "FilmName");
-            return View();
         }
 
-        // POST: Reviews/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ReviewId,UserId,FilmId,ReviewTitle,PostDate,Description,ReviewScore")] Review review)
-        {
-            if (ModelState.IsValid)
-            {
-                review.UserId = User.Identity.Name;
-                db.Reviews.Add(review);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            ViewBag.FilmId = new SelectList(db.ClsFilms, "FilmId", "FilmName", review.FilmId);
-            return View(review);
-        }
+        
 
         // GET: Reviews/Edit/5
         public ActionResult Edit(int? id)
@@ -196,7 +251,7 @@ namespace MVCSamp_FilmReview.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ReviewId,UserId,FilmId,ReviewTitle,PostDate,Description,ReviewScore")] Review review)
+        public ActionResult Edit([Bind(Include = "ReviewId,UserId,FilmId,ReviewTitle,PostDate,Description")] Review review)
         {
             if (ModelState.IsValid)
             {

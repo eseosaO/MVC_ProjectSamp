@@ -2,13 +2,17 @@
 
 @{
     ViewBag.Title = "Reviews";
+
 }
 
 <h2>Available Reviews</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<div class="text-center">
+    <p>
+        <a class="btn btn-primary" href="~/Reviews/Create">Create New Review</a>
+    </p>
+</div>
+
 <table class="table">
     <tr>
         <th>
@@ -51,6 +55,7 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ReviewScore)
+            
         </td>
         <td>
             @if (ViewBag.UserId != "" && item.UserId != null)

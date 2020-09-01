@@ -263,6 +263,34 @@
     <Compile Include="Migrations\202008131759123_updateuserscoretoReview.designer.cs">
       <DependentUpon>202008131759123_updateuserscoretoReview.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202008310855381_ScoreType.cs" />
+    <Compile Include="Migrations\202008310855381_ScoreType.designer.cs">
+      <DependentUpon>202008310855381_ScoreType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008311312041_ReviewScoreImp.cs" />
+    <Compile Include="Migrations\202008311312041_ReviewScoreImp.designer.cs">
+      <DependentUpon>202008311312041_ReviewScoreImp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008311447590_ReviewScoreImp2.cs" />
+    <Compile Include="Migrations\202008311447590_ReviewScoreImp2.designer.cs">
+      <DependentUpon>202008311447590_ReviewScoreImp2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008311647123_ReviewScoreImp3.cs" />
+    <Compile Include="Migrations\202008311647123_ReviewScoreImp3.designer.cs">
+      <DependentUpon>202008311647123_ReviewScoreImp3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008311650336_ReviewScoreImp31.cs" />
+    <Compile Include="Migrations\202008311650336_ReviewScoreImp31.designer.cs">
+      <DependentUpon>202008311650336_ReviewScoreImp31.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008311831298_UserScoretyp.cs" />
+    <Compile Include="Migrations\202008311831298_UserScoretyp.designer.cs">
+      <DependentUpon>202008311831298_UserScoretyp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009011749117_reviewdb.cs" />
+    <Compile Include="Migrations\202009011749117_reviewdb.designer.cs">
+      <DependentUpon>202009011749117_reviewdb.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Actor.cs" />
@@ -288,6 +316,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\Avengers.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
@@ -301,7 +330,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -442,6 +473,27 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202008131759123_updateuserscoretoReview.resx">
       <DependentUpon>202008131759123_updateuserscoretoReview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008310855381_ScoreType.resx">
+      <DependentUpon>202008310855381_ScoreType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008311312041_ReviewScoreImp.resx">
+      <DependentUpon>202008311312041_ReviewScoreImp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008311447590_ReviewScoreImp2.resx">
+      <DependentUpon>202008311447590_ReviewScoreImp2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008311647123_ReviewScoreImp3.resx">
+      <DependentUpon>202008311647123_ReviewScoreImp3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008311650336_ReviewScoreImp31.resx">
+      <DependentUpon>202008311650336_ReviewScoreImp31.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008311831298_UserScoretyp.resx">
+      <DependentUpon>202008311831298_UserScoretyp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009011749117_reviewdb.resx">
+      <DependentUpon>202009011749117_reviewdb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
