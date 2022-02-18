@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1169
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCSamp_FilmReview", "MVCSamp_FilmReview\MVCSamp_FilmReview.csproj", "{8A829EF2-C45B-4D32-A166-6AD679F5D416}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCSamp_FilmReview.Tests", "MVCSamp_FilmReview.Tests\MVCSamp_FilmReview.Tests.csproj", "{7B21A5E6-0EDD-4F9F-9A2D-FB9B7C31C723}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8A829EF2-C45B-4D32-A166-6AD679F5D416}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A829EF2-C45B-4D32-A166-6AD679F5D416}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A829EF2-C45B-4D32-A166-6AD679F5D416}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A829EF2-C45B-4D32-A166-6AD679F5D416}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B21A5E6-0EDD-4F9F-9A2D-FB9B7C31C723}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B21A5E6-0EDD-4F9F-9A2D-FB9B7C31C723}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B21A5E6-0EDD-4F9F-9A2D-FB9B7C31C723}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B21A5E6-0EDD-4F9F-9A2D-FB9B7C31C723}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7D46C30C-01A9-4FA0-BFBB-547AEF47896D}
+	EndGlobalSection
+EndGlobal
