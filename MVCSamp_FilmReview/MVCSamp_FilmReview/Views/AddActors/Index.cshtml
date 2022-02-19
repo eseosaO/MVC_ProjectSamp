@@ -1,0 +1,39 @@
+﻿@model IEnumerable<MVCSamp_FilmReview.Models.AddActor>
+
+@{
+    ViewBag.Title = "Actors to Film";
+}
+
+<h2>Add Actors to a Film</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Actors Name
+        </th>
+        <th>
+            Film
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Actor.FirstName)  @Html.DisplayFor(modelItem => item.Actor.Surname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Film.FilmName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.AddActorId }) |
+            @*@Html.ActionLink("Details", "Details", new { id=item.AddActorId }) |*@
+            @Html.ActionLink("Delete", "Delete", new { id=item.AddActorId })
+        </td>
+    </tr>
+}
+
+</table>

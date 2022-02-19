@@ -1,0 +1,97 @@
+﻿@model IEnumerable<MVCSamp_FilmReview.Models.ClsFilm>
+
+@{
+    ViewBag.Title = "Films";
+    MVCSamp_FilmReview.Models.Genre Gen = new MVCSamp_FilmReview.Models.Genre();
+}
+
+<h2>Available Films</h2>
+<div class="glyphicon-align-center">
+<form action="ClsFilms">
+    <p>
+        Search by Genre: @Html.DropDownList("SearchStringGenre", new SelectList(Gen.GenreList))
+
+    </p>
+    <p>
+        <select name="AverageScore">
+            <option value="Best Films">Best Films</option>
+            <option value="Worst Films">Worst Films</option>
+        </select>
+    </p>
+    <input type="submit" value="Filter" />
+</form>
+</div>
+
+<div class="text-center" >
+    <p>
+        <a class="btn btn-primary" href="~/ClsFilms/Create">Create New Film Details</a>
+    </p>
+</div>
+
+<table class="table">
+    <tr>
+        <th>
+            Director's Name
+        </th>
+        <th>
+            Film
+        </th>
+        <th>
+            Description
+        </th>
+        <th>
+            Genre
+        </th>
+        <th>
+            AverageScore
+        </th>
+        <th>
+            ReleaseDate
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.AverageScore)
+        </th>*@
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Director.FirstName) @Html.DisplayFor(modelItem => item.Director.LastName)
+        </td>
+        <td>
+            @*@Html.DisplayFor(modelItem => item.FilmName )*@
+            @Html.ActionLink(item.FilmName,"Details", new { id = item.FilmId})
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GenreName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AverageScore)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReleaseDate)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.AverageScore)
+        </td>*@
+        <td>
+            @if(ViewBag.UserId != ""&&item.User != null)
+            {
+
+            if(ViewBag.UserId == "abc@gmail.com" || ViewBag.UserId == item.User.ToString())
+            {
+            @Html.ActionLink("Edit", "Edit", new { id=item.FilmId }) 
+            @*@Html.ActionLink("Details", "Details", new { id=item.FilmId }) |*@
+            <nbsp> | </nbsp>
+            @Html.ActionLink("Delete", "Delete", new { id=item.FilmId })
+            }
+            }
+        </td>
+    </tr>
+}
+
+</table>
