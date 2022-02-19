@@ -1,1 +1,1 @@
-Testing the functionalities of Git.
+Testing the functionalities of Git. More text added.
