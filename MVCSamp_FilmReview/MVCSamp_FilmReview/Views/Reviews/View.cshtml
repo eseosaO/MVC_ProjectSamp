@@ -1,0 +1,66 @@
+﻿@model MVCSamp_FilmReview.Models.Review
+
+@{
+    ViewBag.Title = "View";
+}
+
+<h2>View</h2>
+
+<div>
+    <h4>Review</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FilmForReview.FilmName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FilmForReview.FilmName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReviewTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReviewTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PostDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PostDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReviewScore)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReviewScore)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ReviewId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,70 @@
+﻿@model MVCSamp_FilmReview.Models.Actor
+
+@{
+    ViewBag.Title = "Actor's Details";
+}
+
+<h2>@Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.Surname)</h2>
+
+<div>
+    <h4>Actor's Details</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            First Name
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            Surname
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Surname)
+        </dd>
+
+        <dt>
+            Date of Birth
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateofBirth)
+        </dd>
+
+        <dt>
+            Films Cast On:
+        </dt>
+        @foreach (var item in Model.FilmCastOn)
+        {
+            <dd>
+                @Html.ActionLink(item.FilmName, "Details", "ClsFilms", new { id = item.FilmId }, null)
+            </dd>
+        }
+
+        @*<dt>
+                @Html.DisplayNameFor(model => model.User)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.User)
+            </dd>*@
+
+    </dl>
+</div>
+@if (ViewBag.UserId != "")
+{
+    <div class="glyphicon-text-color">
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.ActorId }) 
+        </p>
+    </div>
+}
+
+    <div class="glyphicon-link">
+        <p>
+            @Html.ActionLink("Back to List of Actors", "Index")
+        </p>
+    </div>

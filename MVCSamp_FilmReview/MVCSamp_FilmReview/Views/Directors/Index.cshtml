@@ -1,0 +1,54 @@
+﻿@model IEnumerable<MVCSamp_FilmReview.Models.Director>
+
+@{
+    ViewBag.Title = "Directors";
+}
+
+<h2>Available Directors of Film</h2>
+
+<div class="text-center">
+    <p>
+        <a class="btn btn-primary" href="~/Directors/Create">Create New Director's Details</a>
+    </p>
+</div>
+
+<table class="table">
+    <tr>
+        
+        <th>
+            Director's Names
+        </th>
+        <th>
+            Date of Birth
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>*@
+        <td>
+            @Html.ActionLink(item.FirstName, "Details", new { id = item.DirectorId })
+            @Html.ActionLink(item.LastName, "Details", new { id = item.DirectorId })
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateofBirth)
+        </td>
+        <td>
+            @if (ViewBag.UserId != "" && item.User != null)
+            {
+                if (ViewBag.UserId == "abc@gmail.com" || ViewBag.UserId == item.User.ToString())
+                {
+                    @Html.ActionLink("Edit", "Edit", new { id = item.DirectorId }) 
+                    @*@Html.ActionLink("Details", "Details", new { id=item.DirectorId }) |*@
+                    <nbsp>|</nbsp>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.DirectorId })
+                }
+            }
+        </td>
+    </tr>
+}
+
+</table>

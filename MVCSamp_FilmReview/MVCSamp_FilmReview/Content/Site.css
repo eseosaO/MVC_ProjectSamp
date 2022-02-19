@@ -1,7 +1,15 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    font-family: Verdana;
+    background-color:gainsboro;
 }
+
+.jumbotron{
+    background-color:lavender !important;
+}
+
+
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
@@ -21,4 +29,15 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+h2{
+    font-family: Georgia;
+    color: navy;
+}
+
+h5{
+    font-family:'Comic Sans MS';
+    color:chartreuse;
+    font-size:xx-large;
 }
